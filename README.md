@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Menu Package Generator
+
+A web application that uses Google's Gemini AI to generate menu packages based on user preferences.
+
+## Features
+
+- Upload your menu as a PDF or image file
+- AI-powered menu extraction using Google's Gemini Vision model
+- Select your target audience (adults, kids, or family)
+- AI-powered menu package generation with Gemini
+- View recommended starters, main courses, and desserts
+- Responsive design
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+ and npm
+- Google Gemini API key
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone <repository-url>
+cd menu-package-generator
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Create a `.env.local` file in the root directory and add your Gemini API key:
+
+```
+# Google Gemini API key for menu extraction and package generation
+GEMINI_API_KEY=your_gemini_api_key_here
+```
+
+- Get a Google Gemini API key from: https://aistudio.google.com/app/apikey
+
+4. Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## How to Use
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. On the first screen, upload your menu file (PDF, image, or text file)
+2. The AI will process your menu and extract items with prices
+3. Select your target audience (Adults, Kids, or Family)
+4. Click "Generate Menu" to proceed
+5. Review your menu items on the second screen
+6. Click "Generate Package" to get AI recommendations
+7. View your customized package with starters, main courses, and desserts
 
-## Learn More
+## Menu File Format
 
-To learn more about Next.js, take a look at the following resources:
+Your menu file should follow this format:
+```
+Caesar Salad - £8.99
+Margherita Pizza - £12.99
+Chocolate Cake - £6.99
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Next.js 14
+- TypeScript
+- Tailwind CSS
+- Google Gemini API (for both menu extraction and package generation)
 
-## Deploy on Vercel
+## Future Improvements
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Support for more file formats
+- Multiple package options
+- Customizable preferences (dietary restrictions, price range)
+- Save and share functionality
