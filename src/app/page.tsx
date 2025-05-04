@@ -23,6 +23,7 @@ export default function Home() {
   const [menuText, setMenuText] = useState('');
   const [fileType, setFileType] = useState('');
   const [audienceType, setAudienceType] = useState('adult');
+  const [discountPercentage, setDiscountPercentage] = useState(10);
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
   const [packageResult, setPackageResult] = useState<PackageData | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -57,7 +58,8 @@ export default function Home() {
         },
         body: JSON.stringify({
           menuItems,
-          audienceType
+          audienceType,
+          discountPercentage
         }),
       });
       
@@ -116,6 +118,8 @@ export default function Home() {
                 setMenuText={setMenuText}
                 audienceType={audienceType}
                 setAudienceType={setAudienceType}
+                discountPercentage={discountPercentage}
+                setDiscountPercentage={setDiscountPercentage}
                 onGenerate={handleGenerateMenu}
                 setFileType={setFileType}
               />

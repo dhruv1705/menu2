@@ -21,7 +21,7 @@ interface MenuItem {
 
 export async function POST(request: Request) {
   try {
-    const { menuItems, audienceType } = await request.json();
+    const { menuItems, audienceType, discountPercentage = 10 } = await request.json();
 
     // Validate request
     if (!menuItems || !Array.isArray(menuItems) || !audienceType) {
@@ -72,13 +72,16 @@ export async function POST(request: Request) {
       Consider these preferences: ${preferences.preferences}
       Avoid: ${preferences.avoid}
       
-      Also calculate an appropriate package price that offers at least 10% savings compared to ordering items individually.
+      IMPORTANT PRICING INSTRUCTIONS:
+      1. Calculate the sum of all individual items you selected
+      2. Apply a ${discountPercentage}% discount to that sum to get the package price (exactly ${discountPercentage}% off)
+      3. Use the SAME CURRENCY SYMBOL as the menu items (e.g., if prices are in Rs., your package price should be in Rs.)
       
       Return ONLY a JSON object with these fields:
-      - starters: array of objects, each with name and price 
-      - mains: array of objects, each with name and price
-      - desserts: array of objects, each with name and price
-      - packagePrice: the discounted package total price as a string with currency symbol
+      - starters: array of objects, each with name and price (preserve original format) 
+      - mains: array of objects, each with name and price (preserve original format)
+      - desserts: array of objects, each with name and price (preserve original format)
+      - packagePrice: the discounted package total price as a string with the SAME currency symbol as in the menu items
     `;
 
     try {
@@ -136,24 +139,89 @@ export async function POST(request: Request) {
       
       // Calculate the savings compared to buying individually
       const calculateTotalPrice = (items: MenuItem[]): number => {
-        return items.reduce((sum, item) => {
-          const price = parseFloat(item.price.replace(/[^0-9.]/g, ''));
-          return isNaN(price) ? sum : sum + price;
-        }, 0);
+        console.log('Items to calculate:', JSON.stringify(items));
+        
+        let total = 0;
+        for (const item of items) {
+          // Log each item for debugging
+          console.log(`Processing item: ${item.name}, price: ${item.price}`);
+          
+          // Extract the numeric part correctly
+          const priceMatch = item.price.match(/(\d+)/);
+          if (priceMatch && priceMatch[1]) {
+            const price = parseInt(priceMatch[1], 10);
+            console.log(`Extracted price for ${item.name}: ${price}`);
+            total += price;
+          } else {
+            console.log(`Failed to extract price for ${item.name}`);
+          }
+        }
+        
+        console.log(`Total calculated price: ${total}`);
+        return total;
       };
       
+      // Detect the currency symbol from menu items
+      const detectCurrencySymbol = (items: MenuItem[]): string => {
+        // Default to Rs. if we can't detect
+        if (!items || items.length === 0) return 'Rs.';
+        
+        // Try to extract currency symbol from the first item with a price
+        for (const item of items) {
+          if (item.price) {
+            // Extract currency symbols like Rs., Rs, $, £, €, etc.
+            const match = item.price.match(/^([^\d]+)/);
+            if (match && match[1]) {
+              console.log(`Detected currency symbol: ${match[1]}`);
+              return match[1];
+            }
+          }
+        }
+        
+        console.log('Using default currency symbol: Rs.');
+        return 'Rs.';
+      };
+      
+      // Calculate the total price of all selected items
       const individualTotal = calculateTotalPrice([
         ...(packageData.starters || []),
         ...(packageData.mains || []),
         ...(packageData.desserts || [])
       ]);
       
-      const packagePrice = parseFloat(packageData.packagePrice.replace(/[^0-9.]/g, ''));
-      const savings = individualTotal - packagePrice;
+      console.log('Individual total price:', individualTotal);
       
-      // Format the package price if needed
-      if (!packageData.packagePrice.includes('£') && !packageData.packagePrice.includes('$')) {
-        packageData.packagePrice = `£${packageData.packagePrice.replace(/[^0-9.]/g, '')}`;
+      // Get the currency symbol
+      const currencySymbol = detectCurrencySymbol([
+        ...(packageData.starters || []),
+        ...(packageData.mains || []),
+        ...(packageData.desserts || [])
+      ]);
+      
+      // Calculate the correct discounted price based on the user's selected percentage
+      const correctDiscountedPrice = Math.round(individualTotal * (1 - discountPercentage / 100));
+      const savings = Math.round(individualTotal - correctDiscountedPrice);
+      
+      console.log('Calculated package price:', correctDiscountedPrice);
+      console.log('Calculated savings:', savings);
+      
+      // Update the package price with correct currency and value
+      packageData.packagePrice = `${currencySymbol}${correctDiscountedPrice}`;
+      
+      // Write debug logs to file
+      try {
+        const fs = require('fs');
+        const debugInfo = `
+Time: ${new Date().toISOString()}
+Menu Items: ${JSON.stringify(packageData, null, 2)}
+Individual Total: ${individualTotal}
+Discount: ${discountPercentage}%
+Package Price: ${correctDiscountedPrice}
+Savings: ${savings}
+        `;
+        fs.appendFileSync('./debug/prices.txt', debugInfo);
+      } catch (error) {
+        console.error('Failed to write debug log:', error);
       }
       
       return NextResponse.json({
@@ -161,7 +229,8 @@ export async function POST(request: Request) {
         package: {
           ...packageData,
           audienceType,
-          totalSavings: savings > 0 ? `£${savings.toFixed(2)}` : undefined
+          discountPercentage,
+          totalSavings: savings > 0 ? `${currencySymbol}${savings}` : undefined
         }
       });
     } catch (geminiError) {

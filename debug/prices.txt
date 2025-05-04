@@ -1,0 +1,281 @@
+Debug file created: Fri May  2 17:44:48 IST 2025
+
+Time: 2025-05-02T12:16:11.992Z
+Menu Items: {
+  "starters": [
+    {
+      "name": "Paneer Tikka",
+      "price": "Rs.180"
+    },
+    {
+      "name": "Hara Bhara Kabab",
+      "price": "Rs.150"
+    }
+  ],
+  "mains": [
+    {
+      "name": "Butter Chicken",
+      "price": "Rs.320"
+    }
+  ],
+  "desserts": [
+    {
+      "name": "Gulab Jamun",
+      "price": "Rs.60"
+    }
+  ],
+  "packagePrice": "Rs.639"
+}
+Individual Total: 710
+Discount: 10%
+Package Price: 639
+Savings: 71
+        
+Time: 2025-05-02T12:21:02.611Z
+Menu Items: {
+  "starters": [
+    {
+      "name": "Paneer Tikka",
+      "price": "Rs.180"
+    },
+    {
+      "name": "Hara Bhara Kabab",
+      "price": "Rs.150"
+    }
+  ],
+  "mains": [
+    {
+      "name": "Butter Chicken",
+      "price": "Rs.320"
+    }
+  ],
+  "desserts": [
+    {
+      "name": "Gulab Jamun",
+      "price": "Rs.60"
+    }
+  ],
+  "packagePrice": "Rs.639"
+}
+Individual Total: 710
+Discount: 10%
+Package Price: 639
+Savings: 71
+        
+Time: 2025-05-04T05:55:37.076Z
+Menu Items: {
+  "starters": [
+    {
+      "name": "Paneer Tikka",
+      "price": "Rs.180"
+    },
+    {
+      "name": "Hara Bhara Kabab",
+      "price": "Rs.150"
+    }
+  ],
+  "mains": [
+    {
+      "name": "Butter Chicken",
+      "price": "Rs.320"
+    }
+  ],
+  "desserts": [
+    {
+      "name": "Gulab Jamun",
+      "price": "Rs.60"
+    }
+  ],
+  "packagePrice": "Rs.639"
+}
+Individual Total: 710
+Discount: 10%
+Package Price: 639
+Savings: 71
+        
+Time: 2025-05-04T05:59:26.680Z
+Menu Items: {
+  "starters": [
+    {
+      "name": "Paneer Tikka",
+      "price": "Rs.180"
+    },
+    {
+      "name": "Chicken Liver Pâté",
+      "price": "Rs.250"
+    }
+  ],
+  "mains": [
+    {
+      "name": "Lamb Rogan Josh",
+      "price": "Rs.400"
+    }
+  ],
+  "desserts": [
+    {
+      "name": "Chocolate Lava Cake",
+      "price": "Rs.200"
+    }
+  ],
+  "packagePrice": "Rs.927"
+}
+Individual Total: 1030
+Discount: 10%
+Package Price: 927
+Savings: 103
+        
+Time: 2025-05-04T06:00:24.819Z
+Menu Items: {
+  "starters": [
+    {
+      "name": "Paneer Tikka",
+      "price": "Rs.180"
+    },
+    {
+      "name": "Hara Bhara Kabab",
+      "price": "Rs.150"
+    }
+  ],
+  "mains": [
+    {
+      "name": "Butter Chicken",
+      "price": "Rs.320"
+    }
+  ],
+  "desserts": [
+    {
+      "name": "Gulab Jamun",
+      "price": "Rs.60"
+    }
+  ],
+  "packagePrice": "Rs.639"
+}
+Individual Total: 710
+Discount: 10%
+Package Price: 639
+Savings: 71
+        
+Time: 2025-05-04T06:06:45.239Z
+Menu Items: {
+  "starters": [
+    {
+      "name": "Paneer Tikka",
+      "price": "Rs.180"
+    },
+    {
+      "name": "Hara Bhara Kabab",
+      "price": "Rs.150"
+    }
+  ],
+  "mains": [
+    {
+      "name": "Butter Chicken",
+      "price": "Rs.320"
+    }
+  ],
+  "desserts": [
+    {
+      "name": "Gulab Jamun",
+      "price": "Rs.60"
+    }
+  ],
+  "packagePrice": "Rs.639"
+}
+Individual Total: 710
+Discount: 10%
+Package Price: 639
+Savings: 71
+        
+Time: 2025-05-04T06:07:13.292Z
+Menu Items: {
+  "starters": [
+    {
+      "name": "Paneer Tikka",
+      "price": "Rs.180"
+    },
+    {
+      "name": "Hara Bhara Kabab",
+      "price": "Rs.150"
+    }
+  ],
+  "mains": [
+    {
+      "name": "Butter Chicken",
+      "price": "Rs.320"
+    }
+  ],
+  "desserts": [
+    {
+      "name": "Gulab Jamun",
+      "price": "Rs.60"
+    }
+  ],
+  "packagePrice": "Rs.639"
+}
+Individual Total: 710
+Discount: 10%
+Package Price: 639
+Savings: 71
+        
+Time: 2025-05-04T06:08:12.689Z
+Menu Items: {
+  "starters": [
+    {
+      "name": "Paneer Tikka",
+      "price": "Rs.180"
+    },
+    {
+      "name": "Hara Bhara Kabab",
+      "price": "Rs.150"
+    }
+  ],
+  "mains": [
+    {
+      "name": "Butter Chicken",
+      "price": "Rs.320"
+    }
+  ],
+  "desserts": [
+    {
+      "name": "Gulab Jamun",
+      "price": "Rs.60"
+    }
+  ],
+  "packagePrice": "Rs.639"
+}
+Individual Total: 710
+Discount: 10%
+Package Price: 639
+Savings: 71
+        
+Time: 2025-05-04T06:12:46.816Z
+Menu Items: {
+  "starters": [
+    {
+      "name": "Paneer Tikka",
+      "price": "Rs.180"
+    },
+    {
+      "name": "Hara Bhara Kabab",
+      "price": "Rs.150"
+    }
+  ],
+  "mains": [
+    {
+      "name": "Butter Chicken",
+      "price": "Rs.320"
+    }
+  ],
+  "desserts": [
+    {
+      "name": "Gulab Jamun",
+      "price": "Rs.60"
+    }
+  ],
+  "packagePrice": "Rs.639"
+}
+Individual Total: 710
+Discount: 10%
+Package Price: 639
+Savings: 71
+        

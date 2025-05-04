@@ -5,6 +5,8 @@ interface MenuInputProps {
   setMenuText: (text: string) => void;
   audienceType: string;
   setAudienceType: (type: string) => void;
+  discountPercentage: number;
+  setDiscountPercentage: (percentage: number) => void;
   onGenerate: () => void;
   setFileType: (type: string) => void;
 }
@@ -14,6 +16,8 @@ export default function MenuInput({
   setMenuText,
   audienceType,
   setAudienceType,
+  discountPercentage,
+  setDiscountPercentage,
   onGenerate,
   setFileType
 }: MenuInputProps) {
@@ -91,6 +95,9 @@ export default function MenuInput({
   };
 
   const supportedExtensions = ['.pdf', '.png', '.jpg', '.jpeg', '.webp', '.heic', '.txt', '.csv'];
+
+  // Available discount options
+  const discountOptions = [5, 10, 15, 20, 25];
 
   return (
     <div className="space-y-6">
@@ -207,6 +214,36 @@ export default function MenuInput({
               <span className="absolute top-2 right-2 h-3 w-3 rounded-full bg-purple-500"></span>
             )}
           </label>
+        </div>
+      </div>
+
+      <div className="space-y-3">
+        <label className="block text-sm font-medium text-gray-900">Select package discount:</label>
+        <div className="grid grid-cols-5 gap-2">
+          {discountOptions.map((discount) => (
+            <label 
+              key={discount}
+              className={`relative flex cursor-pointer items-center justify-center p-3 rounded-xl border ${
+                discountPercentage === discount 
+                  ? 'border-green-400 bg-green-50 shadow-sm' 
+                  : 'border-gray-200 hover:border-green-200 bg-white shadow-sm'
+              }`}
+            >
+              <input
+                type="radio"
+                value={discount}
+                checked={discountPercentage === discount}
+                onChange={() => setDiscountPercentage(discount)}
+                className="sr-only"
+              />
+              <span className={`text-sm font-medium ${discountPercentage === discount ? 'text-green-700' : 'text-gray-700'}`}>
+                {discount}%
+              </span>
+              {discountPercentage === discount && (
+                <span className="absolute top-2 right-2 h-2 w-2 rounded-full bg-green-500"></span>
+              )}
+            </label>
+          ))}
         </div>
       </div>
 
